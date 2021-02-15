@@ -19,9 +19,15 @@ function improve(guess, x) {
 }
 
 function sqrtIter(guess, x) {
-  return goodEnough(guess, x) 
-    ? guess 
-    : sqrtIter(improve(guess, x), x);
+  // return goodEnough(guess, x) 
+  //   ? guess 
+  //   : sqrtIter(improve(guess, x), x);
+  if (goodEnough(guess, x)) {
+    // console.log(guess);
+    return guess;
+  } else {
+    return sqrtIter(improve(guess, x), x);
+  }
 }
 
 function sqrt(x) {
@@ -31,7 +37,6 @@ function sqrt(x) {
 // test to see if console.log can evaluate in args
 // console.log(3+4);
 // this writes 7 to console
-
 console.log(sqrt(9));
 console.log(sqrt(100+ 37));
 console.log(sqrt(5) + sqrt(3));
