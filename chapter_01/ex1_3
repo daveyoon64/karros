@@ -1,0 +1,36 @@
+; Define a procedure that takes 3 numbers as args and returns
+; the sum of the squares of two larger numbers
+
+; Test Cases
+; sumSquare 3 4 5
+; sumSquare 6 4 5
+; sumSquare 3 2 1
+; sumSquare 3 3 3
+
+; Method 1: finding the biggest two numbers
+; if the first number is greater than second number, <--- we know this number is one of the big ones
+;   if second number if greater than third number   <--- we know this number in one of the big two
+;     sumSquare with x and y
+;   else
+;     sumSquare with x and z
+; else if second number is greater than first number
+;   if first number is greater than third number
+;     sumSquare with x and y
+;   else
+;     sumSquare with y and z
+
+; how does and work?
+(define (sumSquare x y z)
+  (cond (and (> x y) (> y z)) 1))
+
+; Simple solution: Just list all three test cases and the else if they're all equal
+; x and y
+; y and z
+; x and z
+
+Answer:
+(define (sumSquare x y z)
+    (cond ((and (> x z) (> y z)) (+ (* x x) (* y y)))
+          ((and (> y x) (> z x)) (+ (* y y) (* z z)))
+          ((and (> x z) (> z y)) (+ (* x x) (* z z)))
+          (else (+ (* x x) (* y y))))))
